@@ -67,7 +67,7 @@ class XCCPutSearchSimulation extends Simulation {
                 </not-query>
                </query>
                return
-               search:resolve-nodes($query)""")
+               search:resolve($query)""")
 
   setUp(scenario("insert&search")
     .during(40, "i") {
