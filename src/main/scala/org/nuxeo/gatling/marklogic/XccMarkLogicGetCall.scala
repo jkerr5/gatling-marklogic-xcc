@@ -31,7 +31,7 @@ class XccMarkLogicGetCall(requestName: String, uri: Expression[String], protocol
 
   override def execute(session: Session): Unit = {
     val start = TimeHelper.nowMillis
-    val request = protocol.newAdhocQuery(s"xdmp:document-get('${uri(session).get}')")
+    val request = protocol.newAdhocQuery(s"fn:doc('${uri(session).get}')")
     val result = protocol.call(request)
     val end = TimeHelper.nowMillis
     if (result == "")
