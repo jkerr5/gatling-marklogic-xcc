@@ -30,8 +30,10 @@ class XccMarkLogicSearchCall(requestName: String, query: Expression[String], pro
 
   override def execute(session: Session): Unit = {
     val start = TimeHelper.nowMillis
-    val request = protocol.newAdhocQuery(query(session).get)
-    val result = protocol.call(request)
+    //System.out.println("calling search...")
+    val result = protocol.callAdhocQuery(query(session).get)
+    //System.out.println("called search")
+    //val result = protocol.call(request)
     val end = TimeHelper.nowMillis
     if (result == "")
       writeRequestData(session, requestName, start, start, end, end, OK)
