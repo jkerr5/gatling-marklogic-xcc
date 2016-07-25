@@ -33,7 +33,7 @@ object XccMarkLogicProtocol {
 case class XccMarkLogicProtocol(uri: String) extends Protocol {
 
   //val session = ContentSourceFactory.newContentSource(new URI(uri)).newSession()
-  //val source = ContentSourceFactory.newContentSource(new URI(uri))
+  val source = ContentSourceFactory.newContentSource(new URI(uri))
 
   // these have to be fixed to use the session correctly
   def call(content: Content): String = {
