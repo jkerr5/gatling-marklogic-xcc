@@ -11,6 +11,14 @@ class Xcc(requestName: String) {
 
   def search(request: Expression[String]): XccMarkLogicSearchBuilder = XccMarkLogicSearchBuilder(requestName, request)
 
+  def findOne(
+		key1: String,
+		value1: String,
+		key2: String,
+		value2: String,
+		ignored: Array[String]
+  ): XccFindOneSearchBuilder = XccFindOneSearchBuilder(requestName, key1, value1, key2, value2, ignored)
+
 }
 
 case class XccUri(requestName: String, uri: Expression[String]) {

@@ -63,7 +63,8 @@ return search:resolve($query, $options)
   setUp(scenario("search:search")
     .during(40, "i") {
       randomSwitch(
-        100.0 -> exec(search)
+        50.0 -> exec(search),
+        50.0 -> exec(search)
       )
     }
     .inject(atOnceUsers(20)))
