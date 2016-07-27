@@ -37,10 +37,14 @@ class XCCPutSearchSimulation extends Simulation {
       )
     )
 
+	val get = xcc("get")
+		.uri("/07f02881-b305-45b2-8807-9e2d864dcf66.xml").get()
+
 	def scn(name: String) = scenario(name)
 	    .randomSwitch(
-	      50.0 -> exec(search),
-	      50.0 -> feed(feeder).exec(insert)
+	    	33.3 -> exec(get),
+	      33.3 -> exec(search),
+	      33.3 -> feed(feeder).exec(insert)
 	    )
 
   setUp(
