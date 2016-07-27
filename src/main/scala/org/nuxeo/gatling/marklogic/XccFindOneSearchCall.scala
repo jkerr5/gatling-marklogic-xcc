@@ -54,10 +54,10 @@ let $not-ids := fn:tokenize($ignored-list, "\|")
 
 let $query :=
 		cts:and-query((
-			cts:element-value-query(fn:QName("", $key1), $value1, ("lang=en"), 1),
-			cts:element-value-query(fn:QName("", $key2), $value2, ("lang=en"), 1),
+			cts:element-range-query(fn:QName("", $key1), "=", $value1),
+			cts:element-value-query(fn:QName("", $key2), $value2),
 			cts:not-query(
-				cts:element-value-query(fn:QName("","ecm__id"), $not-ids)
+				cts:element-range-query(fn:QName("","ecm__id"), "=", $not-ids)
 			)
 		))
 
