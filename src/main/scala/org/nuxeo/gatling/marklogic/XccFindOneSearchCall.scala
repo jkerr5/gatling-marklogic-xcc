@@ -61,11 +61,13 @@ let $query :=
 			)
 		))
 
-return
+return (
 	cts:search(
 		fn:collection(),
 		$query
-	)
+	),
+	xdmp:log("search: " ||  fn:seconds-from-duration(xdmp:eval("fn:current-dateTime()") - fn:current-dateTime()))
+)
 """
 
 	override def execute(session: Session): Unit = {
