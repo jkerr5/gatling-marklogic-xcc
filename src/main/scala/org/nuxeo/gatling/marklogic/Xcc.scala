@@ -19,6 +19,11 @@ class Xcc(requestName: String) {
 		ignored: Array[String]
   ): XccFindOneSearchBuilder = XccFindOneSearchBuilder(requestName, key1, value1, key2, value2, ignored)
 
+  def update(
+		uri: String,
+		patchSpec: String
+  ): XccUpdateBuilder = XccUpdateBuilder(requestName, uri, patchSpec)
+
 }
 
 case class XccUri(requestName: String, uri: Expression[String]) {
