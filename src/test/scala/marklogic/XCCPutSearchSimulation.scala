@@ -6,6 +6,9 @@ import org.nuxeo.gatling.marklogic.Predef._
 
 
 class XCCPutSearchSimulation extends Simulation {
+	val threads = 8
+	val docsPerThread = 20000
+
   val uri = "xcc://admin:systemml@localhost:18020"
   //val uri = "xcc://admin:systemml@localhost:8100"
   //val uri = "xcc://admin:systemml@ip-10-93-157-85:8020"
@@ -49,10 +52,10 @@ class XCCPutSearchSimulation extends Simulation {
 
   setUp(
 	  (for {
-	    i <- 0 until 1
+	    i <- 0 until threads
 	   } yield {
 	    scn(s"Test $i")
-	    	.inject(atOnceUsers(100))
+	    	.inject(atOnceUsers(docsPerThread))
 	  }).toList // setUp can accept List[PopulationBuilder]
   ).protocols(xccConf)
 
